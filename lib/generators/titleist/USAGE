@@ -1,0 +1,11 @@
+Description:
+    Generate initial files for the titleist gem
+
+Example:
+    rails generate titleist
+
+    This will create:
+        config/locales/titleist.en.yml
+
+    And edit:
+        app/views/layouts/application.html.erb

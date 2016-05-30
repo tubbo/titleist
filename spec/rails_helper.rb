@@ -51,6 +51,15 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
+  config.before :each do |example|
+    if example.metadata[:type] == :generator
+      tests described_class
+      destination Rails.root.join('tmp/generators')
+      prepare_destination
+      run_generator arguments
+    end
+  end
+
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
