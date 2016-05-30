@@ -1,10 +1,9 @@
 require 'rails_helper'
+require 'rails/generators'
 require 'generators/titleist/titleist_generator'
 
 RSpec.describe TitleistGenerator, type: :generator do
-  let :arguments do
-    []
-  end
+  destination Rails.root.join('tmp/generators')
 
   it 'generates a locale file' do
     expect(File.exist?(file('config/locales/titleist.en.yml'))).to be true

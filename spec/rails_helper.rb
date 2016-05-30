@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rails'
+require 'rails/generators/test_case'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -51,12 +52,16 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
+  config.include Rails::Generators::Testing::Behaviour, type: :generator
+  # config.include Rails::Generators::Testing::SetupAndTeardown, type: :generator
+  # config.include Rails::Generators::Testing::Assertions, type: :generator
+  config.include FileUtils, type: :generator
+
   config.before :each do |example|
     if example.metadata[:type] == :generator
-      tests described_class
-      destination Rails.root.join('tmp/generators')
+      # tests described_class
       prepare_destination
-      run_generator arguments
+      run_generator []
     end
   end
 
