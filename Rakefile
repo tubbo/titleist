@@ -18,3 +18,5 @@ desc 'Run lint checks'
 RuboCop::RakeTask.new :lint
 
 Bundler::GemHelper.install_tasks
+
+task default: %i(lint test build)
