@@ -1,7 +1,12 @@
+# set up the container
 language: ruby
 rvm: 2.3.0
 cache: bundle
+# test the build
 script: bin/rake
+# keep docs up to date
+before_deploy: curl http://rubydoc.info/checkout/github/tubbo/titleist
+# deploy tags to rubygems
 deploy:
   provider: rubygems
   on:
