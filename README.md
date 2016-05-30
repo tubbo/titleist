@@ -1,6 +1,6 @@
 # Titleist
 
-A powerful title helper for Rails apps that uses/abuses i18n and allows
+A powerful title helper for [Rails][] apps that uses/abuses [i18n][] and allows
 for maximum override potential.
 
 ## Usage
@@ -77,3 +77,11 @@ change to end users.
 ## License
 
 The gem is available as open source under the terms of the [MIT License][].
+
+[Rails]: http://rubyonrails.org
+[i18n]: http://guides.rubyonrails.org/i18n.html
+[Code of Conduct]: CODE_OF_CONDUCT.md
+[Travis CI]: http://travis-ci.org
+[RubyGems]: http://rubygems.org
+[Semantic Versioning]: http://semver.org
+[MIT License]: MIT-LICENSE
