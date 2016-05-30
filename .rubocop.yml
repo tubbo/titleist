@@ -4,5 +4,5 @@ Style/StringLiterals:
 Metrics/LineLength:
   Exclude:
     - spec/**/*
-
-inherit_from: .rubocop_todo.yml
+    - bin/**/*
+    - titleist.gemspec
