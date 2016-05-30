@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'yard'
+  s.add_development_dependency 'codeclimate-test-reporter'
 end

@@ -1,5 +1,10 @@
 # Titleist
 
+[![Build Status](https://travis-ci.org/tubbo/titleist.svg?branch=master)](https://travis-ci.org/tubbo/titleist)
+[![Code Climate](https://codeclimate.com/github/tubbo/titleist/badges/gpa.svg)](https://codeclimate.com/github/tubbo/titleist)
+[![Test Coverage](https://codeclimate.com/github/tubbo/titleist/badges/coverage.svg)](https://codeclimate.com/github/tubbo/titleist/coverage)
+[![Issue Count](https://codeclimate.com/github/tubbo/titleist/badges/issue_count.svg)](https://codeclimate.com/github/tubbo/titleist)
+
 A powerful title helper for [Rails][] apps that uses/abuses [i18n][] and allows
 for maximum override potential.
 
