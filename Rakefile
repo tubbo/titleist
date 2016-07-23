@@ -24,4 +24,4 @@ Travis::Release::Task.new
 
 Bundler::GemHelper.install_tasks
 
-task default: %i(test build)
+task default: %i(app:db:setup test build)
