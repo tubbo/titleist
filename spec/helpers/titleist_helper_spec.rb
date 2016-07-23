@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TitleHelper, type: :helper do
+RSpec.describe TitleistHelper, type: :helper do
   before do
     allow(@controller).to receive_messages(
       controller_name: 'posts',

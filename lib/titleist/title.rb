@@ -48,8 +48,6 @@ module Titleist
 
     # @!attribute page [w]
     #   Override the given scope and set a new page title.
-    #
-    #   @param new_title [String]
     #   @return [String]
     attr_writer :page
 
