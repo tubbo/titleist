@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'yard'
   s.add_development_dependency 'codeclimate-test-reporter'
+  s.add_development_dependency 'generator_spec'
 end
