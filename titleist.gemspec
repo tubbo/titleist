@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'yard'
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'generator_spec'
+  s.add_development_dependency 'travis-release'
 end
