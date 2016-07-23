@@ -6,3 +6,6 @@ Metrics/LineLength:
     - spec/**/*
     - bin/**/*
     - titleist.gemspec
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

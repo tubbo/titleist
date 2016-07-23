@@ -5,21 +5,21 @@ module Titleist
     # Top-level scope in the i18n locale for all title configuration.
     ROOT_SCOPE = :titles
 
-    # @!attribute [r]
+    # @!attribute controller [r]
     #   @return [String] Controller name of the current request.
     attr_reader :controller
 
-    # @!attribute [r]
+    # @!attribute action [r]
     #   @return [String] Action name of the current request.
     attr_reader :action
 
-    # @!attribute [r]
+    # @!attribute context [r]
     #   @return [Hash] Passed-in context from the helper method.
     attr_reader :context
 
-    # @option [String] :controller - Current request controller name.
-    # @option [String] :action - Current request action name.
-    # @option [Hash] :context - Optional params passed in from the helper.
+    # @param controller [String] Current request controller name.
+    # @param action [String] Current request action name.
+    # @param context [Hash] Optional params passed in from the helper.
     def initialize(controller: '', action: '', context: {})
       @controller = controller
       @action = action
@@ -46,17 +46,24 @@ module Titleist
       )
     end
 
-    # Override the given scope and set a new page title.
+    # @!attribute page [w]
+    #   Override the given scope and set a new page title.
     #
-    # @param [String] new_title
-    # @return [String]
+    #   @param new_title [String]
+    #   @return [String]
     attr_writer :page
 
+    # Format this title as a +String+.
+    #
+    # @return [String]
     def to_s
       return app if root?
       I18n.t :format, to_h
     end
 
+    # Format this title as a +Hash+ of attributes.
+    #
+    # @return [Hash]
     def to_h
       {
         scope: ROOT_SCOPE,
@@ -65,23 +72,34 @@ module Titleist
       }
     end
 
+    # TODO: Necessary?
     def root?
       false
     end
 
     private
 
+    # Default title of the application, if one is not specified.
+    #
     # @private
     # @return [String] Default app title guessed from module name.
     def default_app_title
       Rails.application.class.name.deconstantize.titleize
     end
 
+    # Default title of the current page, if one cannot be found.
+    #
+    # @private
+    # @return [String] Action title combined with resource title.
     def default_page_title
       return controller.titleize if action == 'index'
       [action_title, resource_title].join(' ')
     end
 
+    # Default title verb for the current action.
+    #
+    # @private
+    # @return [String] "View", "Delete", or the titleized +action+.
     def action_title
       case action
       when 'show'
@@ -93,12 +111,18 @@ module Titleist
       end
     end
 
+    # Default title of the resource the controller is operating on.
+    #
+    # @private
+    # @return [String] Singularized controller name.
     def resource_title
       controller.singularize.titleize
     end
 
+    # Scope for +I18n+ derived from the controller name and root.
+    #
     # @private
-    # @return [String] i18n scope derived from controller name and root.
+    # @return [Array] Derived i18n scope.
     def scope
       @scope ||= [ROOT_SCOPE, controller]
     end
