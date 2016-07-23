@@ -77,11 +77,21 @@ module Titleist
 
     private
 
-    # Default title of the application, if one is not specified.
+    # Use the default configured app title in +Rails.configuration+ or
+    # the derived app title if one is not specified.
+    #
+    # @private
+    # @return [String] Default application title from module or config.
+    def default_app_title
+      Rails.configuration.titleist.app_title || derived_app_title
+    end
+
+    # Derive app title by titleizing the application module name if one
+    # is not configured.
     #
     # @private
     # @return [String] Default app title guessed from module name.
-    def default_app_title
+    def derived_app_title
       Rails.application.class.name.deconstantize.titleize
     end
 
