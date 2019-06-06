@@ -27,7 +27,7 @@ module Titleist
           .with(
             :show,
             name: 'Test',
-            scope: [:titles, 'posts'],
+            scope: %i[titles posts],
             default: 'View Post'
           )
           .returns('View "Test"')
@@ -40,7 +40,7 @@ module Titleist
     end
 
     test 'only shows app title on root path' do
-      @title.stubs(:root?).returns(true)
+      @title.instance_variable_set('@root', true)
 
       assert_equal 'App', @title.to_s
     end

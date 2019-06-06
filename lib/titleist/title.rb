@@ -20,10 +20,12 @@ module Titleist
     # @param controller [String] Current request controller name.
     # @param action [String] Current request action name.
     # @param context [Hash] Optional params passed in from the helper.
-    def initialize(controller: '', action: '', context: {})
+    # @param root [Boolean] Whether this is the root path
+    def initialize(controller: '', action: '', context: {}, root: false)
       @controller = controller
       @action = action
       @context = context
+      @root = root
     end
 
     # Global application title.
@@ -71,9 +73,13 @@ module Titleist
       }
     end
 
-    # TODO: Necessary?
+    # Whether the page we're generating a title for is the root path.
+    # This will cause no page title to display, and is set when the
+    # title object is instantiated.
+    #
+    # @return [Boolean]
     def root?
-      false
+      @root
     end
 
     private
@@ -134,7 +140,11 @@ module Titleist
     # @private
     # @return [Array] Derived i18n scope.
     def scope
-      @scope ||= [ROOT_SCOPE, controller]
+      @scope ||= [ROOT_SCOPE, *demodulized_controller]
+    end
+
+    def demodulized_controller
+      controller.split('/').map(&:to_sym)
     end
   end
 end

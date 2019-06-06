@@ -18,7 +18,8 @@ module TitleistHelper
     @title ||= Titleist::Title.new(
       controller: controller.controller_name,
       action: controller.action_name,
-      context: context
+      context: context,
+      root: current_path?(root_path)
     )
   end
 
