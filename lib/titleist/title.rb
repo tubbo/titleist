@@ -56,6 +56,7 @@ module Titleist
     # @return [String]
     def to_s
       return app if root?
+
       I18n.t :format, to_h
     end
 
@@ -101,6 +102,7 @@ module Titleist
     # @return [String] Action title combined with resource title.
     def default_page_title
       return controller.titleize if action == 'index'
+
       [action_title, resource_title].join(' ')
     end
 

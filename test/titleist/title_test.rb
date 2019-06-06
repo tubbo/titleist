@@ -24,7 +24,12 @@ module Titleist
 
     test 'find page title from i18n' do
       I18n.stubs(:t)
-          .with(:show, name: 'Test', scope: [:titles, 'posts'], default: 'View Post')
+          .with(
+            :show,
+            name: 'Test',
+            scope: [:titles, 'posts'],
+            default: 'View Post'
+          )
           .returns('View "Test"')
 
       assert_equal 'View "Test"', @title.page

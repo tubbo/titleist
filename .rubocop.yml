@@ -1,5 +1,16 @@
+AllCops:
+  Exclude:
+    - test/dummy/**/*
+    - vendor/**/*
+
 Style/StringLiterals:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/LineLength:
+  Exclude:
+    - titleist.gemspec
+    - test/test_helper.rb
+    - bin/rails
