@@ -19,7 +19,7 @@ before_script:
 # run all tests
 script:
   - bin/rails test
-  - bin/rails test:system
+  - bin/rails test test/system
 
 # build the .gem package
 after_success:

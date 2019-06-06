@@ -12,13 +12,6 @@ load 'rails/tasks/statistics.rake'
 desc 'Generate documentation'
 YARD::Rake::YardocTask.new :doc
 
-desc 'Run system tests'
-namespace :test do
-  task :system do
-    system 'bin/rails test test/system'
-  end
-end
-
 desc 'Run lint checks'
 RuboCop::RakeTask.new :lint
 
