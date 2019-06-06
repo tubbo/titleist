@@ -1,0 +1,7 @@
+en:
+  hello: "Hello world"
+  titles:
+    application: App
+    format: '%{page} | %{app}'
+    posts:
+      show: 'View "%{name}"'

@@ -1,11 +1,5 @@
 Style/StringLiterals:
   Enabled: false
 
-Metrics/LineLength:
-  Exclude:
-    - spec/**/*
-    - bin/**/*
-    - titleist.gemspec
-
 Style/FrozenStringLiteralComment:
   Enabled: false

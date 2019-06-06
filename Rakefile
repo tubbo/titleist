@@ -1,10 +1,10 @@
 require 'bundler/setup'
 require 'yard'
-require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'travis/release'
+require 'rake/testtask'
 
-APP_RAKEFILE = File.expand_path('../spec/dummy/Rakefile', __FILE__)
+APP_RAKEFILE = File.expand_path('test/dummy/Rakefile', __dir__)
 
 load 'rails/tasks/engine.rake'
 load 'rails/tasks/statistics.rake'
@@ -12,8 +12,12 @@ load 'rails/tasks/statistics.rake'
 desc 'Generate documentation'
 YARD::Rake::YardocTask.new :doc
 
-desc 'Run all tests'
-RSpec::Core::RakeTask.new :test
+desc 'Run system tests'
+namespace :test do
+  task :system do
+    system 'bin/rails test test/system'
+  end
+end
 
 desc 'Run lint checks'
 RuboCop::RakeTask.new :lint
@@ -23,5 +27,3 @@ RuboCop::RakeTask.new :lint
 Travis::Release::Task.new
 
 Bundler::GemHelper.install_tasks
-
-task default: %i(app:db:setup test build)
