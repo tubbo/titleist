@@ -19,7 +19,7 @@ module TitleistHelper
       controller: controller.controller_name,
       action: controller.action_name,
       context: context,
-      root: current_path?(root_path)
+      root: current_page?(root_path)
     )
   end
 
