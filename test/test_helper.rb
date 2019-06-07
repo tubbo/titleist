@@ -30,6 +30,21 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include Rails.application.routes.url_helpers
 
   fixtures :all
-  driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
   parallelize workers: :number_of_processors if respond_to? :parallelize
+  driven_by :selenium,
+            using: :chrome,
+            screen_size: [1400, 1400],
+            options: {
+              desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
+                chromeOptions: {
+                  args: %w[
+                    headless
+                    disable-gpu
+                    disable-popup-blocking
+                    --enable-features=NetworkService,NetworkServiceInProcess
+                  ],
+                  w3c: false
+                }
+              )
+            }
 end
