@@ -2,8 +2,7 @@ module Titleist
   # Object that turns passed-in scope details into a String of title
   # text derived from the +I18n+ locale configuration.
   class Title
-    # Top-level scope in the i18n locale for all title configuration.
-    ROOT_SCOPE = :titles
+    DEFAULT_FORMAT = '%{page} - %{app}'.freeze
 
     # @!attribute controller [r]
     #   @return [String] Controller name of the current request.
@@ -13,18 +12,21 @@ module Titleist
     #   @return [String] Action name of the current request.
     attr_reader :action
 
-    # @!attribute context [r]
+    # @!attribute context [rw]
     #   @return [Hash] Passed-in context from the helper method.
-    attr_reader :context
+    attr_accessor :context
+
+    delegate :[], :[]=, to: :context
+    delegate :to_str, to: :to_s
 
     # @param controller [String] Current request controller name.
     # @param action [String] Current request action name.
     # @param context [Hash] Optional params passed in from the helper.
     # @param root [Boolean] Whether this is the root path
-    def initialize(controller: '', action: '', context: {}, root: false)
+    def initialize(controller:, action:, root: false)
       @controller = controller
       @action = action
-      @context = context
+      @context = {}
       @root = root
     end
 
@@ -32,24 +34,24 @@ module Titleist
     #
     # @return [String]
     def app
-      I18n.t :application, context.merge(
-        scope: ROOT_SCOPE,
+      @app ||= I18n.t :title, context.reverse_merge(
+        scope: :application,
         default: default_app_title
       )
     end
 
-    # Page title from given scope.
+    # Page title from the current scope.
     #
     # @return [String]
     def page
-      @page ||= I18n.t action.to_sym, context.merge(
-        scope: scope,
+      @page ||= I18n.t :title, context.reverse_merge(
+        scope: [*demodulized_controller, action],
         default: default_page_title
       )
     end
 
-    # @!attribute page [w]
-    #   Override the given scope and set a new page title.
+    # @!attribute page [rw]
+    #   Override the current page title
     #   @return [String]
     attr_writer :page
 
@@ -59,18 +61,7 @@ module Titleist
     def to_s
       return app if root?
 
-      I18n.t :format, to_h
-    end
-
-    # Format this title as a +Hash+ of attributes.
-    #
-    # @return [Hash]
-    def to_h
-      {
-        scope: ROOT_SCOPE,
-        app: app,
-        page: page
-      }
+      I18n.t :title_format, scope: :application, default: DEFAULT_FORMAT
     end
 
     # Whether the page we're generating a title for is the root path.
@@ -133,14 +124,6 @@ module Titleist
     # @return [String] Singularized controller name.
     def resource_title
       controller.singularize.titleize
-    end
-
-    # Scope for +I18n+ derived from the controller name and root.
-    #
-    # @private
-    # @return [Array] Derived i18n scope.
-    def scope
-      @scope ||= [ROOT_SCOPE, *demodulized_controller]
     end
 
     def demodulized_controller

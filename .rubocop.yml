@@ -14,3 +14,7 @@ Metrics/LineLength:
     - titleist.gemspec
     - test/test_helper.rb
     - bin/rails
+
+Style/FormatStringToken:
+  Exclude:
+    - lib/titleist/title.rb

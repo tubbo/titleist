@@ -26,4 +26,5 @@ module Titleist
   extend ActiveSupport::Autoload
 
   autoload :Title
+  autoload :Controller
 end
