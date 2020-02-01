@@ -1,3 +1,4 @@
+# typed: true
 module Titleist
   VERSION = '0.1.1'.freeze
 end

@@ -1,3 +1,4 @@
+# typed: strong
 module Titleist
   # Extensions into the Rails framework that mixin the controller and
   # helper modules when ActionController and ActionView are loaded.

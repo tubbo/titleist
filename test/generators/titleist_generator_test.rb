@@ -1,3 +1,4 @@
+# typed: false
 require 'test_helper'
 require 'generators/titleist/titleist_generator'
 

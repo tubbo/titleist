@@ -1,3 +1,4 @@
+# typed: strict
 require 'active_support/all'
 
 require 'titleist/version'

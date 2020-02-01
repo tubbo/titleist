@@ -20,3 +20,6 @@ gem 'selenium-webdriver'
 gem 'sqlite3'
 gem 'webdrivers'
 gem 'yard', '~> 0.9'
+
+gem "sorbet", "~> 0.5.5325"
+gem "sorbet-runtime", "~> 0.5.5325"

@@ -1,3 +1,4 @@
+# typed: false
 module Titleist
   # Object that turns passed-in scope details into a String of title
   # text derived from the +I18n+ locale configuration.
