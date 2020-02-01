@@ -8,7 +8,6 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby_version: 2.6.x
-      - run: |
-          apt-get install -yy libsqlite3-dev
-          bundle install
+      - run: sudo apt-get install -yy libsqlite3-dev
+      - run: bundle install
       - run: bundle exec rake
