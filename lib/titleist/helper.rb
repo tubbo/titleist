@@ -1,4 +1,5 @@
 # typed: false
+
 module Titleist
   # Helper methods in ActionView for rendering the title.
   module Helper

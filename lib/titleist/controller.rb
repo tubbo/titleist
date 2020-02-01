@@ -1,4 +1,5 @@
 # typed: false
+
 module Titleist
   # Controller mixins for reading titles without ActionView
   module Controller

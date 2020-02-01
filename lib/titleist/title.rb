@@ -1,4 +1,5 @@
-# typed: false
+# typed: true
+
 module Titleist
   # Object that turns passed-in scope details into a String of title
   # text derived from the +I18n+ locale configuration.
@@ -70,7 +71,7 @@ module Titleist
     private
 
     def default_app_title
-      Rails.application.class.name.deconstantize.titleize
+      Rails.application.class.name&.deconstantize&.titleize.to_s
     end
 
     def default_page_title
