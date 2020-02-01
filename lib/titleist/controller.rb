@@ -13,11 +13,7 @@ module Titleist
     #
     # @return [Titleist::Title]
     def title
-      @title ||= Titleist::Title.new(
-        controller: controller_name,
-        action: action_name,
-        root: current_page?(root_path)
-      )
+      @title ||= Title.new(**params.to_unsafe_h.deep_symbolize_keys)
     end
 
     # Shorthand for calling +title.app+ in the view.

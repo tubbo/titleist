@@ -5,5 +5,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id]
+    title[:post] = @post.name
   end
 end

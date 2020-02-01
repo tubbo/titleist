@@ -16,16 +16,4 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test)/}) }
 
   s.add_dependency 'rails'
-
-  s.add_development_dependency 'capybara', '~> 3'
-  s.add_development_dependency 'codeclimate-test-reporter'
-  s.add_development_dependency 'minitest', '~> 5'
-  s.add_development_dependency 'mocha'
-  s.add_development_dependency 'puma'
-  s.add_development_dependency 'rubocop', '~> 0.71'
-  s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'travis-release'
-  s.add_development_dependency 'webdrivers'
-  s.add_development_dependency 'yard', '~> 0.9'
 end

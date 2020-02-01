@@ -1,12 +1,13 @@
 module Titleist
-  # Extensions into the Rails framework, including the
-  # +Rails.configuration.titleist+ config which can optionally configure
-  # the global application title.
+  # Extensions into the Rails framework that mixin the controller and
+  # helper modules when ActionController and ActionView are loaded.
   class Engine < Rails::Engine
-    config.titleist = ActiveSupport::OrderedOptions.new
-
     ActiveSupport.on_load :action_controller do
       include Titleist::Controller
+    end
+
+    ActiveSupport.on_load :action_view do
+      include Titleist::Helper
     end
   end
 end

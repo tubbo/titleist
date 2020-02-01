@@ -25,6 +25,8 @@ if ActiveSupport::TestCase.respond_to?(:parallelize)
   ActiveSupport::TestCase.parallelize(workers: :number_of_processors)
 end
 
+Capybara.server = :puma, { Silent: true }
+
 # System test base class
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include Rails.application.routes.url_helpers

@@ -10,15 +10,16 @@ require 'titleist/engine'
 #
 # @example Setting a title
 #   en:
-#     titles:
-#       application: My App
-#       format: '%{app} | %{page}'
-#       pages:
-#         index: Home
-#       posts:
-#         index: All Posts
-#         show: "Post %{name}"
-#         new: New Post
+#     titleist:
+#       format: '%{app} | %{page}' # this is the default
+#     application:
+#       title: My App
+#     pages:
+#       index:
+#         title: Home
+#     posts:
+#       show:
+#         title: "Post %{name}"
 #
 # @example Rendering the current title
 #   = title_tag
@@ -27,4 +28,5 @@ module Titleist
 
   autoload :Title
   autoload :Controller
+  autoload :Helper
 end

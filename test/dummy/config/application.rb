@@ -3,6 +3,7 @@ require_relative 'boot'
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
+
 require "titleist"
 
 module Dummy
@@ -14,6 +15,8 @@ module Dummy
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.action_controller.default_url_options = { host: 'test.host' }
+    config.action_mailer.default_url_options = { host: 'test.host' }
   end
 end
 

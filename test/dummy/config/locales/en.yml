@@ -1,7 +1,9 @@
 en:
-  hello: "Hello world"
-  titles:
-    application: App
+  titleist:
     format: '%{page} | %{app}'
-    posts:
-      show: 'View "%{name}"'
+  layouts:
+    application:
+      title: App
+  posts:
+    show:
+      title: 'View "%{post}"'

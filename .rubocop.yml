@@ -9,7 +9,7 @@ Style/StringLiterals:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Exclude:
     - titleist.gemspec
     - test/test_helper.rb

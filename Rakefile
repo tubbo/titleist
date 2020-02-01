@@ -1,7 +1,7 @@
 require 'bundler/setup'
+require 'bundler/gem_tasks'
 require 'yard'
 require 'rubocop/rake_task'
-require 'travis/release'
 require 'rake/testtask'
 
 APP_RAKEFILE = File.expand_path('test/dummy/Rakefile', __dir__)
@@ -15,8 +15,11 @@ YARD::Rake::YardocTask.new :doc
 desc 'Run lint checks'
 RuboCop::RakeTask.new :lint
 
-# Release automatically with tag pushes to GitHub via Travis CI on
-# to RubyGems.org
-Travis::Release::Task.new
+Rake::TestTask.new(:test) do |t|
+  t.libs << "test"
+  t.libs << "lib"
+  t.test_files = FileList["test/**/*_test.rb"]
+  t.verbose = false
+end
 
-Bundler::GemHelper.install_tasks
+task default: %i[lint test doc build]
