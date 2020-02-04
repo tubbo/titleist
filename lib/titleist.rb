@@ -1,5 +1,6 @@
 # typed: strict
 require 'active_support/all'
+require 'sorbet-runtime'
 
 require 'titleist/version'
 require 'titleist/engine'
