@@ -16,4 +16,5 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test)/}) }
 
   s.add_dependency 'rails'
+  s.add_dependency "sorbet-runtime", "~> 0.5.5325"
 end
