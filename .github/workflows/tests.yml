@@ -10,7 +10,7 @@ jobs:
       - name: Install Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby_version: 2.6.x
+          ruby-version: 2.6.x
       - name: Install SQLite
         run: sudo apt-get install -yy libsqlite3-dev
       - name: Install bundled dependencies
