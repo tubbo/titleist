@@ -24,8 +24,8 @@ Rake::TestTask.new(:test) do |t|
 end
 
 desc 'Run type checks'
-task :types do
-  sh 'srb'
+task :check do
+  sh 'bundle exec srb tc'
 end
 
 task default: %i[types lint test doc build]

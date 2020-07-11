@@ -4,6 +4,7 @@ module Titleist
   # Controller mixins for reading titles without ActionView
   module Controller
     extend ActiveSupport::Concern
+    extend T::Sig
 
     included do
       helper_method :title, :app_title, :page_title
@@ -14,6 +15,7 @@ module Titleist
     # +title.app+ to view individual pieces of the title.
     #
     # @return [Titleist::Title]
+    sig { returns(Titleist::Title) }
     def title
       @title ||= Title.new(**params.to_unsafe_h.deep_symbolize_keys)
     end
@@ -21,6 +23,7 @@ module Titleist
     # Shorthand for calling +title.app+ in the view.
     #
     # @return [String] i18n-configured global application title.
+    sig { returns(String) }
     def app_title
       title.app
     end
@@ -28,6 +31,7 @@ module Titleist
     # Shorthand for calling +title.page+ in the view.
     #
     # @return [String] i18n-configured title for the current page.
+    sig { returns(String) }
     def page_title
       title.page
     end

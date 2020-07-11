@@ -21,4 +21,5 @@ gem 'sqlite3'
 gem 'webdrivers'
 gem 'yard', '~> 0.9'
 
-gem "sorbet", "~> 0.5.5325"
+gem 'sorbet'
+gem 'sorbet-runtime'
