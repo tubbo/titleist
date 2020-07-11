@@ -2,12 +2,18 @@ name: Tests
 on: [push]
 jobs:
   test:
+    name: Automated Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
+      - name: Checkout Latest Source Code
+        uses: actions/checkout@v1
+      - name: Install Ruby
+        uses: actions/setup-ruby@v1
         with:
           ruby_version: 2.6.x
-      - run: sudo apt-get install -yy libsqlite3-dev
-      - run: bundle install
-      - run: bundle exec rake
+      - name: Install SQLite
+        run: sudo apt-get install -yy libsqlite3-dev
+      - name: Install bundled dependencies
+        run: bundle install
+      - name: Run type checks, style checks, automated tests, and build the gem
+        run: bundle exec rake
