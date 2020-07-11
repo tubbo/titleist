@@ -39,7 +39,7 @@ rails generate titleist
 
 ### Configuration
 
-Edit your **config/locales/en.yml** file to add your own titles and format:
+Edit your **config/locales/titleist.en.yml** file to add your own titles and format:
 
 ```yaml
 en:
