@@ -1,5 +1,7 @@
 # Titleist
 
+![Improve Your Swing](https://www.titleist.com/build/assets/images/logo-titleist.svg)
+
 [![Tests](https://github.com/tubbo/titleist/workflows/Tests/badge.svg)](https://github.com/tubbo/titleist/actions)
 [![Maintainability](https://codeclimate.com/github/tubbo/titleist/badges/gpa.svg)](https://codeclimate.com/github/tubbo/titleist)
 [![Test Coverage](https://codeclimate.com/github/tubbo/titleist/badges/coverage.svg)](https://codeclimate.com/github/tubbo/titleist/coverage)
