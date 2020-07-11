@@ -10,27 +10,6 @@ module Titleist
     # key `titelist.format`.
     FORMAT = '%{page} - %{app}'.freeze
 
-    # @!method [](key)
-    #   Read title context
-    #
-    #   @param [Symbol] key
-    #   @return [String] the value or `nil`
-
-    # @!method []=(key, value)
-    #   Write title context
-    #
-    #   @param [Symbol] key
-    #   @param [String] value
-    #   @return [String] the value
-
-    # @!method to_str
-    #   Allows for conversion of this object into a String for
-    #   ActionView
-    #   @return [String]
-
-    delegate :[], :[]=, to: :@params
-    delegate :to_str, to: :to_s
-
     # @param [String] controller - Current request controller name.
     # @param [String] action - Current request action name.
     # @param [Hash] context - Optional params passed in from the helper.
@@ -39,6 +18,23 @@ module Titleist
       @controller = controller
       @action = action
       @params = context
+    end
+
+    # Read title context
+    #
+    # @param [Symbol] key
+    # @return [String] the value or `nil`
+    def [](key)
+      @params[key]
+    end
+
+    # Write title context
+    #
+    # @param [Symbol] key
+    # @param [String] value
+    # @return [String] the value
+    def []=(key, value)
+      @params[key] = value
     end
 
     # Global application title.
@@ -109,7 +105,7 @@ module Titleist
     end
 
     # @private
-    # @return [String]
+    # @return [Array<String>]
     def controller_scope
       @controller.split('/')
     end

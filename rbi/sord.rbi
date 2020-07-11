@@ -10,6 +10,14 @@ module Titleist
     extend T::Sig
     FORMAT = T.let('%{page} - %{app}'.freeze, T.untyped)
 
+    # _@param_ `controller` — - Current request controller name.
+    # 
+    # _@param_ `action` — - Current request action name.
+    # 
+    # _@param_ `context` — - Optional params passed in from the helper.
+    sig { params(controller: String, action: String, context: T::Hash[T.untyped, T.untyped]).void }
+    def initialize(controller:, action:, **context); end
+
     # Read title context
     # 
     # _@param_ `key`
@@ -27,19 +35,6 @@ module Titleist
     # _@return_ — the value
     sig { params(key: Symbol, value: String).returns(String) }
     def []=(key, value); end
-
-    # Allows for conversion of this object into a String for
-    # ActionView
-    sig { returns(String) }
-    def to_str; end
-
-    # _@param_ `controller` — - Current request controller name.
-    # 
-    # _@param_ `action` — - Current request action name.
-    # 
-    # _@param_ `context` — - Optional params passed in from the helper.
-    sig { params(controller: String, action: String, context: T::Hash[T.untyped, T.untyped]).void }
-    def initialize(controller:, action:, **context); end
 
     # Global application title.
     sig { returns(String) }
@@ -61,7 +56,7 @@ module Titleist
     sig { returns(String) }
     def resource_title; end
 
-    sig { returns(String) }
+    sig { returns(T::Array[String]) }
     def controller_scope; end
 
     # Override the current page title
@@ -114,11 +109,9 @@ end
 # typed: true
 # Generate initial files for the gem to work.
 class TitleistGenerator < Rails::Generators::Base
-  # sord omit - no YARD return type given, using T.untyped
-  sig { returns(T.untyped) }
+  sig { returns(T.nilable(T.any())) }
   def copy_locale; end
 
-  # sord omit - no YARD return type given, using T.untyped
-  sig { returns(T.untyped) }
+  sig { returns(T.nilable(T.any())) }
   def update_default_application_layout; end
 end

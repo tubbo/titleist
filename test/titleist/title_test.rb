@@ -51,7 +51,6 @@ module Titleist
       full_title = 'View "Test" | App'
 
       assert_equal full_title, @title.to_s
-      assert_equal full_title, @title.to_str
     end
   end
 end

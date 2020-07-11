@@ -10,7 +10,9 @@ load 'rails/tasks/engine.rake'
 load 'rails/tasks/statistics.rake'
 
 desc 'Generate documentation'
-YARD::Rake::YardocTask.new :doc
+task :doc do
+  sh 'bundle exec sord rbi/sord.rbi'
+end
 
 desc 'Run lint checks'
 RuboCop::RakeTask.new :lint
@@ -28,4 +30,4 @@ task :check do
   sh 'bundle exec srb tc'
 end
 
-task default: %i[check lint test doc build]
+task default: %i[doc check lint test build]
