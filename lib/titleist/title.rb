@@ -21,27 +21,29 @@ module Titleist
     #
     #   @param [Symbol] key
     #   @param [String] value
+    #   @return [String] the value
 
     # @!method to_str
+    #   Allows for conversion of this object into a String for
+    #   ActionView
     #   @return [String]
 
     delegate :[], :[]=, to: :@params
     delegate :to_str, to: :to_s
 
-    # @param controller [String] Current request controller name.
-    # @param action [String] Current request action name.
-    # @param context [Hash] Optional params passed in from the helper.
-    # @param root [Boolean] Whether this is the root path
-    def initialize(controller:, action:, **params)
+    # @param [String] controller - Current request controller name.
+    # @param [String] action - Current request action name.
+    # @param [Hash] context - Optional params passed in from the helper.
+    # @return [Titleist::Title]
+    def initialize(controller:, action:, **context)
       @controller = controller
       @action = action
-      @params = params
+      @params = context
     end
 
     # Global application title.
     #
     # @return [String]
-    sig { returns(String) }
     def app
       @app ||= I18n.t :title, @params.reverse_merge(
         scope: %i[layouts application],
@@ -52,7 +54,6 @@ module Titleist
     # Page title from the current scope.
     #
     # @return [String]
-    sig { returns(String) }
     def page
       @page ||= I18n.t :title, @params.reverse_merge(
         scope: [*controller_scope, @action],
@@ -68,26 +69,28 @@ module Titleist
     # Format the full page title.
     #
     # @return [String]
-    sig { returns(String) }
     def to_s
       I18n.t :format, scope: :titleist, default: FORMAT, app: app, page: page
     end
 
     private
 
-    sig { returns(String) }
+    # @private
+    # @return [String]
     def default_app_title
       Rails.application.class.name&.deconstantize&.titleize.to_s
     end
 
-    sig { returns(String) }
+    # @private
+    # @return [String]
     def default_page_title
       return @controller.titleize if @action == 'index'
 
       [action_title, resource_title].join(' ')
     end
 
-    sig { returns(String) }
+    # @private
+    # @return [String]
     def action_title
       case @action
       when 'show'
@@ -99,12 +102,14 @@ module Titleist
       end
     end
 
-    sig { returns(String) }
+    # @private
+    # @return [String]
     def resource_title
       @controller.singularize.titleize
     end
 
-    sig { returns(Array) }
+    # @private
+    # @return [String]
     def controller_scope
       @controller.split('/')
     end

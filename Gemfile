@@ -22,4 +22,4 @@ gem 'webdrivers'
 gem 'yard', '~> 0.9'
 
 gem 'sorbet'
-gem 'sorbet-runtime'
+gem 'sord'

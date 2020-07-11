@@ -6,14 +6,16 @@ module Titleist
     extend T::Sig
 
     # Render the full title as a `<title>` tag.
-    sig { returns(String) }
+    #
+    # @return [String]
     def title_tag
-      content_tag :title, title_text
+      content_tag :title, title_text.to_s
     end
 
     private
 
-    sig { returns(String) }
+    # @private
+    # @return [String]
     def title_text
       current_page?(root_path) ? title.app : title
     end

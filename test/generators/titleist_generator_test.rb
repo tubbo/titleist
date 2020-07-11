@@ -23,7 +23,7 @@ class TitleistGeneratorTest < Rails::Generators::TestCase
   def create_application_layouts
     FileUtils.mkdir_p Rails.root.join('tmp/generators/app/views/layouts')
     FileUtils.cp(
-      Rails.root.join('app/views/layouts/application.html.erb'),
+      Rails.root.join('app/views/layouts/original.html.erb'),
       Rails.root.join('tmp/generators/app/views/layouts/application.html.erb')
     )
   end
