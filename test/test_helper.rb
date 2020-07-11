@@ -22,9 +22,7 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
 end
 
 # Run tests in parallel
-if ActiveSupport::TestCase.respond_to?(:parallelize)
-  ActiveSupport::TestCase.parallelize(workers: :number_of_processors)
-end
+ActiveSupport::TestCase.parallelize(workers: :number_of_processors) if ActiveSupport::TestCase.respond_to?(:parallelize)
 
 Capybara.server = :puma, { Silent: true }
 
