@@ -63,7 +63,7 @@ For the full monty:
 
 ```erb
 <title><%= title %></title>
-<!-- or... %>
+<!-- or... -->
 <%= title_tag %>
 ```
 
