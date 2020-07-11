@@ -15,5 +15,5 @@ jobs:
         run: sudo apt-get install -yy libsqlite3-dev
       - name: Install bundled dependencies
         run: bundle install
-      - name: Run type checks, style checks, automated tests, and build the gem
+      - name: Build the gem and run automated tests
         run: bundle exec rake

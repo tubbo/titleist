@@ -30,4 +30,4 @@ task :check do
   sh 'bundle exec srb tc'
 end
 
-task default: %i[doc check lint test build]
+task default: %i[doc lint test build]
