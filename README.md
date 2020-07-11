@@ -7,6 +7,25 @@
 A powerful title helper for [Rails][] apps using [i18n][], with the
 ability to override practically everything.
 
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'titleist'
+```
+
+And then run:
+
+```bash
+$ bundle
+```
+
+Or install it yourself as:
+```bash
+$ gem install titleist
+```
+
 ## Usage
 
 Run the generator to get an example locale file and titles appearing in
@@ -18,7 +37,7 @@ rails generate titleist
 
 ### Configuration
 
-Edit your **config/locales/titleist.en.yml** file to add your own titles and format:
+Edit your **config/locales/en.yml** file to add your own titles and format:
 
 ```yaml
 en:
@@ -118,25 +137,6 @@ controller and action.
 
 The default title of your app is the name of the application module,
 which is also what Rails considers to be the "app name".
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'titleist'
-```
-
-And then run:
-
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install titleist
-```
 
 ## Contributing
 
